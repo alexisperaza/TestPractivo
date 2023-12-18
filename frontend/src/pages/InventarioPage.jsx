@@ -1,29 +1,29 @@
 import { useContext, useEffect } from "react";
 import { UserModalForm } from "../components/UserModalForm";
 import { UsersList } from "../components/UsersList";
-import { InventarioContext } from "../context/InventarioContext";
 import { AuthContext } from "../auth/context/AuthContext";
+import { findAll } from "../services/inventarioService";
 
 export const InventarioPage = () => {
 
-    const {
-        users,
-        visibleForm,
-        handlerOpenForm,
-        getUsers,
-    } = useContext(InventarioContext);
+    const [products, setProducts] = useState([]);
 
     const { login } = useContext(AuthContext);
 
+    const getProductos = async () =>{
+        const prods = await findAll();
+        setProducts(prods);
+        setIsLoading(false);
+    }
+
     useEffect(() => {
-        getUsers();
+        getProductos();
     }, []);
     
     return (
         <>
 
-            {!visibleForm ||
-                <UserModalForm />}
+
             <div className="container my-4">
                 <h2>Inventario</h2>
                 <div className="row">
