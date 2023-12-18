@@ -23,8 +23,8 @@ export const Navbar = () => {
                         {!login.isAdmin ||
                         <>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/inventario">
-                                    Realizar Pedido
+                                <NavLink className="nav-link" to="/cart">
+                                    Cart
                                 </NavLink>
                             </li>
                             <li className="nav-item">

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-export const InventarioCardView = ({ id,hawa, descuentoProducto, name, cantidad, price }) => {
+export const InventarioCardView = ({ id,handler,hawa, descuentoProducto, name, cantidad, price }) => {
 
     const navigate = useNavigate();
 
     const onAddProduct = (product) => {
         console.log(product);
-        // handler(product);
+        handler(product);
         navigate('/cart');
     }
     
@@ -27,7 +27,7 @@ export const InventarioCardView = ({ id,hawa, descuentoProducto, name, cantidad,
                     <p className="card-text">Existencia: {cantidad}</p>
 
                     <button className="btn btn-primary"
-                        onClick={() => onAddProduct({ id, name, description, price })}>Agregar</button>
+                        onClick={() => onAddProduct({ id, name, cantidad, price })}>Agregar</button>
                 </div>
             </div>
         </>

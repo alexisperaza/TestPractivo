@@ -5,7 +5,7 @@ import { AuthContext } from "../auth/context/AuthContext";
 import { findAll } from "../services/inventarioService";
 import { InventarioCardView } from "../components/InventarioCardView";
 
-export const InventarioPage = () => {
+export const InventarioPage = ({handler}) => {
 
     const [products, setProducts] = useState([]);
 
@@ -33,6 +33,7 @@ export const InventarioPage = () => {
                             key={idProducto}>
                             <InventarioCardView
                                 id={idProducto}
+                                handler= {handler}
                                 hawa={hawa}
                                 descuentoProducto={descuentoProducto}
                                 name={nombreProducto}
