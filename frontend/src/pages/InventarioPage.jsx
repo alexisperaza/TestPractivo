@@ -1,8 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserModalForm } from "../components/UserModalForm";
 import { UsersList } from "../components/UsersList";
 import { AuthContext } from "../auth/context/AuthContext";
 import { findAll } from "../services/inventarioService";
+import { InventarioCardView } from "../components/InventarioCardView";
 
 export const InventarioPage = () => {
 
@@ -12,14 +13,14 @@ export const InventarioPage = () => {
 
     const getProductos = async () =>{
         const prods = await findAll();
+        console.log(prods);
         setProducts(prods);
-        setIsLoading(false);
     }
 
     useEffect(() => {
         getProductos();
     }, []);
-    
+
     return (
         <>
 
@@ -27,19 +28,19 @@ export const InventarioPage = () => {
             <div className="container my-4">
                 <h2>Inventario</h2>
                 <div className="row">
-                    <div className="col">
-                        {(visibleForm || !login.isAdmin) || <button
-                            className="btn btn-primary my-2"
-                            onClick={handlerOpenForm}>
-                            Nueva Camioneta
-                        </button>}
-
-                        {
-                            users.length === 0
-                                ? <div className="alert alert-warning">No hay camionetas en el inventario!</div>
-                                : <UsersList />
-                        }
-                    </div>
+                    {products.map(({idProducto,hawa, descuentoProducto,nombreProducto,existencias,precioLista}) => (
+                        <div className="col-4 my-2"
+                            key={idProducto}>
+                            <InventarioCardView
+                                id={idProducto}
+                                hawa={hawa}
+                                descuentoProducto={descuentoProducto}
+                                name={nombreProducto}
+                                cantidad={existencias}
+                                price={precioLista}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

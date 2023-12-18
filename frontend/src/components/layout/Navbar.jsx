@@ -16,14 +16,14 @@ export const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/users">
+                            <NavLink className="nav-link" to="/inventario">
                                 Pedidos
                             </NavLink>
                         </li>
                         {!login.isAdmin ||
                         <>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/users">
+                                <NavLink className="nav-link" to="/inventario">
                                     Realizar Pedido
                                 </NavLink>
                             </li>

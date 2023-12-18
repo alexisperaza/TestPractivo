@@ -14,15 +14,15 @@ export const UserRoutes = () => {
             <UserProvider>
                 <Navbar />
                 <Routes>
-                    <Route path="users" element={<UsersPage />} />
+                    <Route path="inventario" element={<InventarioPage />} />
 
                     {!login.isAdmin || <>
-                        <Route path="inventario" element={<InventarioPage />} />
+                        <Route path="users" element={<UsersPage />} />
                         <Route path="users/register" element={<RegisterPage />} />
                         <Route path="users/edit/:id" element={<RegisterPage />} />
                     </>
                     }
-                    <Route path="/" element={<Navigate to="/users" />} />
+                    <Route path="/" element={<Navigate to="/Inventario" />} />
                 </Routes>
             </UserProvider>
         </>

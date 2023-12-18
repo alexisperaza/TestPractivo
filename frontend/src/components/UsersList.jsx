@@ -30,7 +30,7 @@ export const UsersList = () => {
                             id={id}
                             username={username}
                             email={email} />
-                    ))
+                    ))      
                 }
             </tbody>
         </table>
